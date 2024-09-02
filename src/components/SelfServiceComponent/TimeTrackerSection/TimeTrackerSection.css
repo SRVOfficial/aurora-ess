@@ -1,0 +1,91 @@
+
+
+   .time-tracker {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .header, .footer-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  .header .date-range {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .date-range button {
+    margin: 0 10px;
+  }
+  
+  .header .actions button {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+  
+  .filter-popup {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    animation: slideDown 0.3s ease-in-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .filter-popup-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .filter-option {
+    margin-bottom: 10px;
+  }
+  
+  .middle-section {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .header-row, .body-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header-row {
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+  
+  .body-row div {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .footer-section div {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+  }
+  

@@ -1,0 +1,67 @@
+.profile-section {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.box-left,
+.box-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.row {
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  flex: 1 0 auto; /* Allow the row to grow and shrink as needed */
+  min-width: 0; /* Ensure flex items can shrink */
+}
+
+.box-bottom {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .box {
+    flex-direction: column;
+  }
+
+  .box-left,
+  .box-right {
+    width: 100%;
+  }
+
+  .row {
+    width: 100%;
+  }
+}
+
+/* Ensure that .box-left and .box-right have equal heights */
+.box {
+  align-items: stretch;
+}
+
+.box-left, .box-right {
+  display: grid;
+  grid-auto-rows: min-content; /* Allow rows to be as tall as their content */
+}
