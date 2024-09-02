@@ -6,6 +6,9 @@ import SelfService from './pages/SelfService';
 
 import Navbar from './components/navbarComponent/Navbar';
 
+import AboutUs from './components/SelfServiceComponent/Header/AboutUs.js';
+import Contact from './components/SelfServiceComponent/Header/Contact.js';
+
 function App() {
   return (
     <Router>
@@ -14,6 +17,8 @@ function App() {
         <Routes>
        
           <Route path="/" element={<SelfService />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
          
           
 
