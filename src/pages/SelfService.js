@@ -226,9 +226,9 @@ const SelfService = () => {
       case 'time':
         return <TimeTrackerSection employee={employee} />;
       case 'goal':
-        return <GoalSection />;
+        return <GoalSection employee={employee} />;
       case 'cases':
-        return <CasesSection />;
+        return <CasesSection employee={employee} />;
       case 'travelExpense':
         return <TravelExpenseSection employee={employee} />;
       case 'travelRequest':

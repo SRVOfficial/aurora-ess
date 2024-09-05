@@ -60,12 +60,14 @@ import React, { useState, useEffect } from 'react';
 import GoalsHeader from './GoalsHeader/GoalsHeader';
 import GoalsList from './GoalsList/GoalsList';
 import FilterModal from './FilterModal/FilterModal';
+import AddGoal from './addGoal/AddGoal';
 import axios from 'axios';
 
-import BASE_URL from '../../../config';
+import BASE_URL from '../../../config.js';
 
-const GoalSection = () => {
+const GoalSection = ({employee}) => {
   const [showFilterModal, setShowFilterModal] = useState(false);
+  const [showAddGoalModal, setShowAddGoalModal] = useState(false);
   const [goals, setGoals] = useState([]);
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const GoalSection = () => {
 
   const fetchGoals = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/goals`);
+      const response = await axios.get(`${BASE_URL}/api/goals/employee/${employee.empId}`);
       setGoals(response.data);
     } catch (error) {
       console.error('Error fetching goals:', error);
@@ -82,8 +84,12 @@ const GoalSection = () => {
   };
 
   const handleAddGoalClick = () => {
-    // Redirect to the to-do list page
-    window.location.href = '/todo-list';
+    setShowAddGoalModal(true); // Show the add goal modal
+  };
+
+  const handleGoalAdded = () => {
+    fetchGoals(); // Refresh the goal list after a new goal is added
+    setShowAddGoalModal(false);
   };
 
   const handleFilterClick = () => {
@@ -92,6 +98,10 @@ const GoalSection = () => {
 
   const handleCloseFilterModal = () => {
     setShowFilterModal(false);
+  };
+
+  const handleCloseAddGoalModal = () => {
+    setShowAddGoalModal(false);
   };
 
   const handleFilterApply = (filters) => {
@@ -106,6 +116,29 @@ const GoalSection = () => {
         <GoalsHeader onAddGoalClick={handleAddGoalClick} onFilterClick={handleFilterClick} />
         <GoalsList goals={goals} />
         {showFilterModal && <FilterModal onClose={handleCloseFilterModal} onApply={handleFilterApply} />}
+        {showFilterModal && <FilterModal onClose={handleCloseFilterModal} onApply={handleFilterApply} />}
+        {/* {showAddGoalModal && (
+          <AddGoal 
+            employee={employee} 
+            onClose={handleCloseAddGoalModal} 
+            onGoalAdded={handleGoalAdded} 
+          />
+        )} */}
+        {showAddGoalModal && (
+  <div className="fixed inset-0 z-50 overflow-y-auto">
+    <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <AddGoal 
+        employee={employee} 
+        onClose={handleCloseAddGoalModal} 
+        onGoalAdded={handleGoalAdded} 
+      />
+    </div>
+  </div>
+)}
       </div>
     </div>
   );
